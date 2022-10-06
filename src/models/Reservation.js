@@ -12,7 +12,7 @@ const Reservation = sequelize.define('reservation',{
     status:{
         type:DataTypes.STRING,
         defaultValue: 'pending',
-        emun: ['pending',"payed","cancelled","finished"],
+        emun: ['pending',"paid","cancelled"],
         allowNull:false
     },
     costumer_name:{
