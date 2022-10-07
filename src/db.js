@@ -8,7 +8,7 @@ process.env.DB_SCHEMA || 'postgres',
 process.env.DB_USER || 'postgres',
 process.env.DB_PASSWORD || 'postgres',
 {
-    host: process.env.DB_HOST || 'localhost',
+    host: process.env.DB_HOST || 'database',
     port: process.env.DB_PORT || 5432,
     dialect: 'postgres',
     dialectOptions: {
