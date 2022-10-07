@@ -1,16 +1,19 @@
 //Instancia de la base de datos - Sequelize
 const {Sequelize} = require('sequelize');
+require('dotenv').config();
 
 //Conexion a la base de datos
-const db = new Sequelize('hotelreservation','postgres','La8maravill@',{
-    host: 'localhost',
-    port: '5432',
+const db = new Sequelize(
+process.env.DB_SCHEMA || 'postgres',
+process.env.DB_USER || 'postgres',
+process.env.DB_PASSWORD || 'postgres',
+{
+    host: process.env.DB_HOST || 'localhost',
+    port: process.env.DB_PORT || 5432,
     dialect: 'postgres',
-    logging: false,
-    native: false,
-    define: {
-    timestamps: false
-  }
+    dialectOptions: {
+        ssl: process.env.DB_SSL == "true"
+    }
 });
 
 module.exports = db

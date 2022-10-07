@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  server:
+    container_name: hotelreservation
+    restart: always
+    build:
+      context: .
+    depends_on:
+      - database
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./:/usr/src/app/
+      - /usr/src/app/node_modules
+
+  database:
+    container_name: database-hotel
+    image: postgres:14.5
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      ##- DATABASE_HOST=127.0.0.1
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+
