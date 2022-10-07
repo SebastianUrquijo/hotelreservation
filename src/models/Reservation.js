@@ -5,7 +5,7 @@ const Reservation = sequelize.define('reservation',{
 
     id:{
         type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
+        /* defaultValue: DataTypes.UUIDV4, */
         allowNull: false,
         primaryKey: true,
     },

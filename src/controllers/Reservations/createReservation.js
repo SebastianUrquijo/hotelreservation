@@ -1,6 +1,7 @@
 const Room = require("../../models/Room");
 const Reservation = require("../../models/Reservation");
 const ReservedRoom = require("../../models/ReservedRoom");
+const uuid = require('uuid');
 
 const createReservation = async(req,res,next)=>{
     
@@ -49,7 +50,7 @@ try {
         const checkRoom = await Room.findOne({where:{room_name}})
 
         const newReservation = await Reservation.create({
-            /* id: uuid.v1(), */
+            id: uuid.v1(),
             costumer_name,
             costumer_lastname,
             phone_number,

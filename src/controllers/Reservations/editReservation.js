@@ -46,7 +46,7 @@ try {
     })
 
     const resetOccupation = (()=>{
-        let array1 = findRoom.occupation
+        let array1 = findRoom.occupation || []
         let array2 = prevRoomData.reservedroom.occupation
         let result = [];
         for (let i = 0; i < array1.length; i++) {
@@ -64,11 +64,19 @@ try {
         occupation: findRoom.occupation ? [...resetOccupation,...arrayDate] : arrayDate
     },{where:{room_name}
     })
+    const deleteOccupation = await Room.update({
+        occupation: []
+    },{where:{room_name:prevRoomData.reservedroom.room_name}
+    })
 
-    if(updateOccupation[0] !== 0){
+    await Reservation.destroy({
+        where:{id}
+    })
+
+    if(updateOccupation[0] !== 0 && deleteOccupation[0] !== 0){
         const checkRoom = await Room.findOne({where:{room_name}})
 
-        const updateReservation = await Reservation.update({
+        const resetReservation = await Reservation.create({
             id,
             costumer_name,
             costumer_lastname,
@@ -78,10 +86,10 @@ try {
             payment_method,
             initial_date,
             final_date
-        },{where:{id}
-    })
+        }
+    )
 
-        if(updateReservation[0] !== 0){
+        if(resetReservation){
             const checkReservation = await Reservation.findByPk(id,{
                 include:[{model:ReservedRoom}]
             })
@@ -93,6 +101,7 @@ try {
                 occupation: arrayDate
             })
 
+            await checkRoom.addReservation(resetReservation)
             await checkReservation.setReservedroom(newRoom)
 
             const finalData = await Reservation.findOne({
