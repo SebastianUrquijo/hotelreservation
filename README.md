@@ -10,12 +10,12 @@ Es necesario tener Docker instalado para poder ejecutar el proyecto siguiendo es
 
 - Crear un archivo .env con las siguientes variables: 
 
-	`DB_SCHEMA=postgres
+	``DB_SCHEMA=postgres
 	DB_USER=postgres
 	DB_PASSWORD=postgres
-	DB_HOST=database`
+	DB_HOST=database``
 
-- Ejecutar el comando: docker-compose up
+- Ejecutar el comando: `docker-compose up`
 
 En caso de fallar el Docker se puede explorar la app de forma tradicional por el puerto 3001
 
