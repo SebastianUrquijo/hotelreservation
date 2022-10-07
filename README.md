@@ -12,9 +12,11 @@ Es necesario tener Docker instalado para poder ejecutar el proyecto con el coman
 
 En caso de fallar el Docker se puede explorar la app de forma tradicional por el puerto 3001
 
+El archivo 'Imsomnia_2022-10-07.json' se puede aprovechar para la exploración de las rutas importandolo en Postman o Imsomnia.
 
 
-Se proponen las siguientes rutas, su justificación y capacidades 
+
+## Se proponen las siguientes rutas, su justificación y capacidades 
 
 
 ## Rutas Habitaciones:
