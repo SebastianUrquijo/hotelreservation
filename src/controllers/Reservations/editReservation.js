@@ -99,7 +99,7 @@ try {
                 include:[{model:ReservedRoom}],
                 where:{id:checkReservation.id}})
     
-            return res.status(200).json({msg:"Reservation edited",data:finalData})
+            return res.status(200).json({msg:`Reservation --${id}-- edited`,data:finalData})
         }
     }
 } catch (error) {
